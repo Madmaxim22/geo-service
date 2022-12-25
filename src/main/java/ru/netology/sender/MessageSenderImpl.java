@@ -20,7 +20,8 @@ public class MessageSenderImpl implements MessageSender {
     }
 
     public String send(Map<String, String> headers) {
-        String ipAddress = String.valueOf(headers.get(IP_ADDRESS_HEADER));
+//        String ipAddress = String.valueOf(headers.get(IP_ADDRESS_HEADER)); Объясните для чего здесь String.valueOf, если тип возвращаемого значения и так String?
+        String ipAddress = headers.get(IP_ADDRESS_HEADER);
         if (ipAddress != null && !ipAddress.isEmpty()) {
             Location location = geoService.byIp(ipAddress);
             System.out.printf("Отправлено сообщение: %s", localizationService.locale(location.getCountry()));
